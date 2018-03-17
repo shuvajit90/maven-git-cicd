@@ -6,5 +6,6 @@ public class MainJava {
 		HelloWorld hwobj = new HelloWorld();
 		System.out.println(hwobj.Message());
 		System.out.println("I am github hook!!!");
+		System.out.println("Testing merge conflicts");
 	}
 }
