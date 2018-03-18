@@ -5,7 +5,7 @@ node {
     stage ('Build') {
 		echo "DEPLOYMENT MANAGER :: Starting build"
         try {
-            bat 'mvn clean package'
+            bat 'mvn -f %WORKSPACE%/source_code/project1/pom.xml clean package'
         } catch (e) {
             currentBuild.result = 'FAILURE'
         }
