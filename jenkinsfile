@@ -6,7 +6,7 @@ node {
     def mvnHome = "C:\\apps\\apache-maven-3.5.0"
 
     /* Set JAVA_HOME, and special PATH variables. */
-    List javaEnv = [
+   /* List javaEnv = [
         "PATH+MVN=${jdktool}/bin:${mvnHome}/bin",
         "M2_HOME=${mvnHome}",
         "JAVA_HOME=${jdktool}"
@@ -14,14 +14,15 @@ node {
 
     withEnv(javaEnv) {
     stage ('Initialize') {
-        sh '''
+        bat '''
             echo "PATH = ${PATH}"
             echo "M2_HOME = ${M2_HOME}"
         '''
-    }
+    }*/
     stage ('Build') {
+		echo "DEPLOYMENT MANAGER :: Starting build"
         try {
-            sh 'mvn -Dmaven.test.failure.ignore=true install'
+            bat 'mvn -Dmaven.test.failure.ignore=true install'
         } catch (e) {
             currentBuild.result = 'FAILURE'
         }
