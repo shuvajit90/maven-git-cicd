@@ -1,9 +1,9 @@
 #!/usr/bin/env groovy
 node {
-	stage('Checkout') {
-		echo "DEPLOYMENT MANAGER :: Starting SCM checkout"
-		checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'source_code']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '068a5ed4-8c40-4758-a855-b5323b223efa', url: 'https://github.com/shuvajit90/maven-git-cicd.git']]]
-		sh '''cd ${WORKSPACE}/source_code
-		ls -l'''
+	checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'source_code']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '068a5ed4-8c40-4758-a855-b5323b223efa', url: 'https://github.com/shuvajit90/maven-git-cicd.git']]]
+	stage('Build') {
+		echo "DEPLOYMENT MANAGER :: Starting Build"
+		
+		sh 'mvn clean verify'
 	}
 }
