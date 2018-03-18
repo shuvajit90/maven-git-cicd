@@ -2,8 +2,8 @@
 node {
 	checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'source_code']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '068a5ed4-8c40-4758-a855-b5323b223efa', url: 'https://github.com/shuvajit90/maven-git-cicd.git']]]
 	
-    String jdktool = "C:\Program Files\Java\jdk1.8.0_111"
-    def mvnHome = "C:\apps\apache-maven-3.5.0"
+    String jdktool = "C:\\Program Files\\Java\\jdk1.8.0_111"
+    def mvnHome = "C:\\apps\\apache-maven-3.5.0"
 
     /* Set JAVA_HOME, and special PATH variables. */
     List javaEnv = [
